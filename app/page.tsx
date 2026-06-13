@@ -1,6 +1,5 @@
 'use client'; // Paso obligatorio en Next.js para usar interactividad
 import Image from "next/image";
-import { useState } from 'react';
 
 const menuItems = [
   {
@@ -30,7 +29,6 @@ const menuItems = [
 ];
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="min-h-screen flex flex-col bg-linear-to-br from-orange-100 via-amber-100 to-rose-100 text-slate-900">
       <header className="mx-auto flex max-w-7xl items-center justify-between rounded-b-4xl bg-linear-to-r from-orange-400 via-orange-300 to-orange-200 px-6 py-6 shadow-2xl shadow-orange-200/30 backdrop-blur-sm md:px-12">
@@ -74,7 +72,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-4xl border border-white/70 bg-white/80 shadow-2xl shadow-orange-200/30">
+          <div className="overflow-hidden rounded-4xl border border-white/70 bg-white/80 shadow-2xl shadow-orange-200/30">
       
           {/* Contenedor de imagen con su propio grupo */}
           <div className="group relative w-full">
@@ -87,55 +85,6 @@ export default function Home() {
             />
           </div>
           
-          {/* CONTENEDOR DEL MENÚ LATERAL (fuera del grupo de la imagen)
-              - top-1/2 y -translate-y-1/2 lo centran verticalmente.
-              - La lógica de translate-x maneja si se esconde o se muestra.
-          */}
-          <div 
-            className={`absolute right-0 top-1/2 z-50 flex -translate-y-1/2 transition-transform duration-500 ease-in-out ${
-              isOpen ? 'translate-x-0' : 'translate-x-72'
-            }`}
-          >
-            {/* PESTAÑA (Botón de gatillo) */}
-            <button 
-              onClick={() => setIsOpen(!isOpen)}
-              className="flex h-20 w-12 items-center justify-center rounded-l-2xl border-y border-l border-white/20 bg-slate-950/95 text-orange-400 shadow-2xl backdrop-blur-xl"
-              aria-label="Abrir menú"
-            >
-              <span className={`text-xl transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-                ◀
-              </span>
-            </button>
-
-            {/* CONTENIDO DEL MENÚ (w-72 = 288px) */}
-            <div className="w-72 space-y-4 border-l border-white/10 bg-slate-950/95 p-6 text-white shadow-2xl backdrop-blur-xl">
-              <h4 className="text-xl font-semibold text-orange-50">Explora con estilo</h4>
-              
-              <div className="flex flex-col gap-3">
-                <a 
-                  href="#menu" 
-                  className="rounded-xl bg-orange-500 px-4 py-3 text-center text-sm font-bold transition hover:bg-orange-600 active:scale-95"
-                >
-                  Ordena ahora
-                </a>
-                
-                <a 
-                  href="#about" 
-                  className="rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-center text-sm font-semibold transition hover:bg-white/10"
-                >
-                  Ver carta
-                </a>
-                
-                <a 
-                  href="#contact" 
-                  className="rounded-xl bg-slate-800 px-4 py-3 text-center text-sm font-semibold transition hover:bg-slate-700"
-                >
-                  Haz tu reserva
-                </a>
-              </div>
-            </div>
-          </div>
-
           </div>
         </section>
 
